@@ -3,6 +3,7 @@ from discord.ext import commands
 # files
 from data import webCollectData
 from embeds import EmbedWithFields
+from images import driver_images, constructor_images
 # env
 from dotenv import load_dotenv
 # packages
@@ -31,7 +32,7 @@ async def calandar(ctx):
     for race in data["MRData"]["RaceTable"]["Races"]:
         name = race["raceName"]
         circuit = race["Circuit"]["circuitName"]
-        #url = race["url"]
+        url = race["url"]
         unformatteddate = race["date"]
         unformattedtime = race["time"]
         time = unformattedtime[0:5]
@@ -39,7 +40,7 @@ async def calandar(ctx):
             unformatteddate, "%Y-%m-%d").strftime("%d/%m/%Y")
         fields.append([
             f"{flagemoji}**{name}**",
-            f"Date: {date}{nl}Time: {time} (zulutime) {nl}Location: {circuit}"
+            f"Date: {date}{nl}Time: {time} (zulutime) {nl}Location: {circuit}  [{name} on Wikipedia]({url})"
         ])
     embed = EmbedWithFields(
         title=f"Race Schedule {year}",
@@ -62,12 +63,29 @@ async def driver(ctx, arg):
         dob = race["dateOfBirth"]
         nation = race["nationality"]
         url = race["url"]
-        embed = discord.Embed(title=f"{first_name} {last_name}",
-                              description=f"Number: {number}{nl}Code: {code}{nl} DOB: {dob}{nl} Nationality: {nation}{nl} {url}")
-        # embed.add_field(name=f"{first_name} {last_name}",
-        #                 value=f"Number: {number}{nl}Code: {code}{nl} DOB: {dob}{nl} Nationality: {nation}{nl} {url}", inline=True)
+        embed = discord.Embed(title=f"{flagemoji}{first_name} {last_name}",
+                              description=f"**Number:** {number}{nl}**Code:** {code}{nl}**DOB**: {dob}{nl}**Nationality:** {nation}{nl}  [{first_name} {last_name} on Wikipedia]({url})")
+        image = last_name.lower()
+        if image in driver_images:
+            embed.set_thumbnail(url=driver_images[image])
+        embed.set_footer(text=bot_name)
         await ctx.send(embed=embed)
 
+
+@ bot.command(name="team")
+async def constructor(ctx, arg):
+    data = webCollectData().apiConstructorInfo(name=arg)
+    for team in data["MRData"]["ConstructorTable"]["Constructors"]:
+        name = team["name"]
+        nation = team["nationality"]
+        url = team["url"]
+        embed = discord.Embed(title=f"{flagemoji}{name}",
+                              description=f"**Origin:** {nation}{nl} [{name} on Wikipedia]({url})")
+        image = name.lower()
+        if image in constructor_images:
+            embed.set_thumbnail(url=constructor_images[image])
+        embed.set_footer(text=bot_name)
+        await ctx.send(embed=embed)
 
 load_dotenv()
 KEY = os.environ.get("DISCORD_KEY")

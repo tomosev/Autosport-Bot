@@ -9,13 +9,13 @@ from datetime import datetime
 load_dotenv()
 
 
-year = datetime.now().year
-number = year
-number2 = "2"
+# year = datetime.now().year
+# number = year
+# number2 = "2"
 
-roundParam = {"year": number, "round": number2}
-qualifyParam = {"year": number, "round": number2}
-raceParam = {"year": number, "round": number2}
+# roundParam = {"year": number, "round": number2}
+# qualifyParam = {"year": number, "round": number2}
+# raceParam = {"year": number, "round": number2}
 
 
 class webCollectData:
@@ -35,6 +35,12 @@ class webCollectData:
 
     def apiDriverInfo(self, name):
         api_url = f"http://ergast.com/api/f1/drivers/{name}.json"
+        r = requests.get(api_url)
+        self.json_data = r.json()
+        return self.json_data
+
+    def apiConstructorInfo(self, name):
+        api_url = f"http://ergast.com/api/f1/constructors/{name}.json"
         r = requests.get(api_url)
         self.json_data = r.json()
         return self.json_data
