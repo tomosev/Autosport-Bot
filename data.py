@@ -18,7 +18,7 @@ load_dotenv()
 # raceParam = {"year": number, "round": number2}
 
 
-class webCollectData:
+class formula1data:
     # def webScrapeData(self):
     #     web_url = os.environ.get("WEB_URL")
     #     r = requests.get(web_url)
@@ -29,6 +29,12 @@ class webCollectData:
 
     def apiRaceSchedule(self):
         api_url = "http://ergast.com/api/f1/current.json"
+        r = requests.get(api_url)
+        self.json_data = r.json()
+        return self.json_data
+
+    def apiLatestResults(self):
+        api_url = "http://ergast.com/api/f1/current/last/results.json"
         r = requests.get(api_url)
         self.json_data = r.json()
         return self.json_data
