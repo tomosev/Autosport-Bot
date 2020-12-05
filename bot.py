@@ -3,7 +3,7 @@ from discord.ext import commands
 # files
 from data import formula1data
 from embeds import EmbedWithFields
-from images import driver_images, constructor_images
+from images import driver_images, constructor_images, constructor_icons
 # env
 from dotenv import load_dotenv
 # packages
@@ -14,7 +14,7 @@ bot = discord.Client()
 bot = commands.Bot(command_prefix="!")
 # embed re-used fields
 bot_name = "Motorsport Bot"
-flagemoji = ":checkered_flag:"
+f1logo = "<:F1logo:784857003225776128>"
 caremoji = ":race_car:"
 nl = '\n'
 embed = discord.Embed()
@@ -26,6 +26,36 @@ async def on_ready():
 
 
 # Formula one commands
+
+@bot.command(name="f1standings")
+async def driverstandings(ctx):
+    fields = []
+    year = datetime.datetime.now().year
+    data = formula1data().apiDriverStandings()
+    for race in data["MRData"]["StandingsTable"]["StandingsLists"][0]["DriverStandings"]:
+        postion = race["position"]
+        points = race["points"]
+        wins = race["wins"]
+        driver_code = race["Driver"]["code"]
+        driver_first = race["Driver"]["givenName"]
+        driver_last = race["Driver"]["familyName"]
+        team = race["Constructors"][0]["name"]
+        teamname = team.lower()
+        icon = ""
+        if teamname in constructor_icons:
+            icon = constructor_icons[teamname]
+        fields.append([
+            f"{icon} **{postion}**: {driver_code}",
+            f"{driver_first} {driver_last}{nl}Points: {points}{nl}Wins: {wins}"
+        ])
+    embed = EmbedWithFields(
+        title=f"Formula 1 {year} standings",
+        color=0xe60000,
+        description=f"The current standings for the {year} season",
+        fields=fields,
+    )
+    embed.set_footer(text=bot_name)
+    await ctx.send(embed=embed)
 
 
 @bot.command(name="f1calandar")
@@ -44,7 +74,7 @@ async def calandar(ctx):
         date = datetime.datetime.strptime(
             unformatteddate, "%Y-%m-%d").strftime("%d/%m/%Y")
         fields.append([
-            f"{flagemoji}**{name}**",
+            f"{f1logo} **{name}**",
             f"Date: {date}{nl}Time: {time} (zulutime) {nl}Location: {circuit}  [{name} on Wikipedia]({url})"
         ])
     embed = EmbedWithFields(
@@ -63,18 +93,23 @@ async def lastresults(ctx):
     fields = []
     data = formula1data().apiLatestResults()
     race_name = data["MRData"]["RaceTable"]["Races"][0]["raceName"]
-    for race in data["MRData"]["RaceTable"]["Races"][0]["Results"]:
+    for results in data["MRData"]["RaceTable"]["Races"][0]["Results"]:
         # race info
         # Driver results
-        position = race["position"]
-        driver_code = race["Driver"]["code"]
-        status = race["status"]
+        position = results["position"]
+        driver_code = results["Driver"]["code"]
+        status = results["status"]
+        team = results["Constructor"]["name"]
+        teamname = team.lower()
+        icon = ""
+        if teamname in constructor_icons:
+            icon = constructor_icons[teamname]
         fields.append([
-            f"{caremoji}**{position}**: {driver_code}",
+            f"{icon}**{position}**: {driver_code}",
             f"{status}"
         ])
     embed = EmbedWithFields(
-        title=f"{flagemoji}Results {race_name}",
+        title=f"{f1logo} Results {race_name}",
         color=0xe60000,
         description=f"Results for the most recent {race_name}",
         fields=fields
@@ -82,8 +117,40 @@ async def lastresults(ctx):
     embed.set_footer(text=bot_name)
     await ctx.send(embed=embed)
 
+
+@bot.command(name="f1qualifying")
 # quali results
-# http://ergast.com/api/f1/2008/results/1
+async def latestqualifying(ctx):
+    fields = []
+    data = formula1data().apiLatestQuali()
+    race_name = data["MRData"]["RaceTable"]["Races"][0]["raceName"]
+    for results in data["MRData"]["RaceTable"]["Races"][0]["QualifyingResults"]:
+        position = results["position"]
+        driver_code = results["Driver"]["code"]
+        Q1 = ""
+        Q2 = ""
+        Q3 = ""
+        if Q1 in results["Q1"]:
+            Q1 = results["Q1"]
+
+        # if Q2 in results["Q2"]:
+        #     Q2 = results["Q2"]
+
+        # if Q3 in results["Q3"]:
+        #     Q3 = results["Q3"]
+
+        fields.append([
+            f"{caremoji}**{position}**: {driver_code}",
+            f"Q1: {Q1}{nl}Q2: {Q2}{nl}Q3: {Q3}"
+        ])
+    embed = EmbedWithFields(
+        title=f"{f1logo}Qualifying Results {race_name}",
+        color=0xe60000,
+        description=f"Qualifying results for the most recent {race_name}",
+        fields=fields
+    )
+    embed.set_footer(text=bot_name)
+    await ctx.send(embed=embed)
 
 
 @bot.command(name="f1drivers")
@@ -145,8 +212,12 @@ async def constructors(ctx):
         name = team["name"]
         nation = team["nationality"]
         url = team["url"]
+        name_lower = name.lower()
+        icon = ""
+        if name_lower in constructor_icons:
+            icon = constructor_icons[name_lower]
         fields.append([
-            f"{caremoji}**{name}**",
+            f"{icon} **{name}**",
             f"Origin: {nation}{nl}[More info]({url})"
         ])
     embed = EmbedWithFields(
@@ -167,12 +238,14 @@ async def constructor(ctx, arg):
         name = team["name"]
         nation = team["nationality"]
         url = team["url"]
-        embed = discord.Embed(title=f"{flagemoji}{name}",
+        name_lower = name.lower()
+        if name_lower in constructor_icons:
+            icon = constructor_icons[name_lower]
+        embed = discord.Embed(title=f"{icon} {name}",
                               description=f"**Origin:** {nation}{nl} [{name} on Wikipedia]({url})",
                               color=0xe60000)
-        image = name.lower()
-        if image in constructor_images:
-            embed.set_thumbnail(url=constructor_images[image])
+        if name_lower in constructor_images:
+            embed.set_thumbnail(url=constructor_images[name_lower])
         embed.set_footer(text=bot_name)
         await ctx.send(embed=embed)
 
