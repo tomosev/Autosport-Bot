@@ -22,6 +22,14 @@ class formula1data:
     #     self.json_data = json.loads(script)
     #     return self.json_data
 
+    def autosportf1(self):
+        web_url = "https://www.autosport.com/rss/feed/f1"
+        r = requests.get(web_url)
+        soup = BeautifulSoup(r.content, "html.parser")
+        script = soup.find_all("item")[1]
+        self.json_data = json.loads(script)
+        return self.json_data
+
     def apiDriverStandings(self):
         api_url = "http://ergast.com/api/f1/current/driverStandings.json"
         r = requests.get(api_url)
@@ -80,3 +88,13 @@ class formula1data:
 
 
 # Import time to add sleep functionality to stop mass requests
+def autosportf1():
+    web_url = "https://www.autosport.com/rss/feed/f1"
+    r = requests.get(web_url)
+    soup = BeautifulSoup(r.content, "html.parser")
+    script = soup.find_all("item")[0]
+    # json_data = json.loads(script)
+    print(script)
+
+
+autosportf1()
