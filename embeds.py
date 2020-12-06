@@ -1,5 +1,8 @@
 import discord
-from discord.ext import commands
+
+
+f1logo = "<:F1logo:784857003225776128>"
+nl = '\n'
 
 
 class EmbedWithFields(discord.Embed):

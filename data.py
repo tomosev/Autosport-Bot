@@ -12,19 +12,6 @@ load_dotenv()
 year_duplicate = datetime.now().year
 
 
-# year = datetime.now().year
-# number = year
-# number2 = "2"
-
-# roundParam = {"year": number, "round": number2}
-# qualifyParam = {"year": number, "round": number2}
-# raceParam = {"year": number, "round": number2}
-
-# def getCurrentRound():
-#     getround = formula1data().apiLatestResults()
-#     round = getround["MRData"]["RaceTable"]["round"]
-
-
 class formula1data:
 
     # def webScrapeData(self):

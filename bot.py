@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 # files
 from data import formula1data
-from embeds import EmbedWithFields
+from embeds import EmbedWithFields, f1logo, nl
 from images import driver_images, constructor_images, constructor_icons
 # env
 from dotenv import load_dotenv
@@ -105,7 +105,7 @@ async def lastresults(ctx):
         if teamname in constructor_icons:
             icon = constructor_icons[teamname]
         fields.append([
-            f"{icon}**{position}**: {driver_code}",
+            f"{icon}** {position}**: {driver_code}",
             f"{status}"
         ])
     embed = EmbedWithFields(
@@ -127,21 +127,32 @@ async def latestqualifying(ctx):
     for results in data["MRData"]["RaceTable"]["Races"][0]["QualifyingResults"]:
         position = results["position"]
         driver_code = results["Driver"]["code"]
-        Q1 = ""
-        Q2 = ""
-        Q3 = ""
-        if Q1 in results["Q1"]:
-            Q1 = results["Q1"]
+        teamname_unformatted = results["Constructor"]["name"]
+        teamname = teamname_unformatted.lower()
+        icon = ""
+        if teamname in constructor_icons:
+            icon = constructor_icons[teamname]
+        # Q1 = ""
+        # Q2 = ""
+        # Q3 = ""
+        # if Q1 in results["Q1"]:
+        #     Q1 = results["Q1"]
+        # else:
+        #     Q1 = ""
 
         # if Q2 in results["Q2"]:
         #     Q2 = results["Q2"]
+        # else:
+        #     Q2 = ""
 
         # if Q3 in results["Q3"]:
         #     Q3 = results["Q3"]
+        # else:
+        #     Q3 = ""
 
         fields.append([
-            f"{caremoji}**{position}**: {driver_code}",
-            f"Q1: {Q1}{nl}Q2: {Q2}{nl}Q3: {Q3}"
+            f"{icon} **{position}**: {driver_code}",
+            f"Please add qualifying times"
         ])
     embed = EmbedWithFields(
         title=f"{f1logo}Qualifying Results {race_name}",
@@ -165,7 +176,7 @@ async def drivers(ctx):
         number = race["permanentNumber"]
         code = race["code"]
         fields.append([
-            f"{caremoji}**{first_name} {last_name}**",
+            f"{f1logo}** {first_name} {last_name}**",
             f"Number: {number}{nl}Code: {code}"
         ])
     embed = EmbedWithFields(
@@ -192,7 +203,7 @@ async def driver(ctx, arg):
         url = race["url"]
         dateofbirth = datetime.datetime.strptime(
             unformated_dob, "%Y-%m-%d").strftime("%d/%m/%Y")
-        embed = discord.Embed(title=f"{caremoji}{first_name} {last_name}",
+        embed = discord.Embed(title=f"{f1logo} {first_name} {last_name}",
                               description=f"**Number:** {number}{nl}**Code:** {code}{nl}**DOB**: {dateofbirth}{nl}**Nationality:** {nation}{nl}  [{first_name} {last_name} on Wikipedia]({url})",
                               color=0xe60000)
         image = last_name.lower()
