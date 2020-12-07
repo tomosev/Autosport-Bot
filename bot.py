@@ -1,5 +1,7 @@
+import json
 import discord
 from discord.ext import tasks, commands
+from discord.ext.commands.core import guild_only
 # files
 from data import formula1data
 from embeds import EmbedWithFields, f1logo, nl
@@ -18,6 +20,9 @@ f1logo = "<:F1logo:784857003225776128>"
 caremoji = ":race_car:"
 nl = '\n'
 embed = discord.Embed()
+
+# removes the deafault help command
+bot.remove_command('help')
 
 
 class formulaOneCommands(commands.Cog):
@@ -51,9 +56,9 @@ class formulaOneCommands(commands.Cog):
         embed.set_footer(text=bot_name)
         await ctx.send(embed=embed)
 
-    @commands.command(name="f1calandar")
+    @commands.command(name="f1calendar")
     # gets all races for a season
-    async def calandar(self, ctx):
+    async def calendar(self, ctx):
         fields = []
         year = datetime.datetime.now().year
         data = formula1data().apiRaceSchedule()
@@ -123,30 +128,27 @@ class formulaOneCommands(commands.Cog):
             icon = ""
             if teamname in constructor_icons:
                 icon = constructor_icons[teamname]
-            # Q1 = ""
-            # Q2 = ""
-            # Q3 = ""
-            # if Q1 in results["Q1"]:
-            #     Q1 = results["Q1"]
-            # else:
-            #     Q1 = ""
+            Q1, Q2, Q3 = "", "", ""
 
-            # if Q2 in results["Q2"]:
-            #     Q2 = results["Q2"]
-            # else:
-            #     Q2 = ""
-
-            # if Q3 in results["Q3"]:
-            #     Q3 = results["Q3"]
-            # else:
-            #     Q3 = ""
+            if "Q1" in results:
+                Q1 = results["Q1"]
+            else:
+                Q1 = ""
+            if "Q2" in results:
+                Q2 = results["Q2"]
+            else:
+                Q2 = ""
+            if "Q3" in results:
+                Q3 = results["Q3"]
+            else:
+                Q3 = ""
 
             fields.append([
                 f"{icon} **{position}**: {driver_code}",
-                f"Please add qualifying times"
+                f"*Q1:* {Q1}{nl}*Q2:* {Q2}{nl}*Q3:* {Q3}"
             ])
         embed = EmbedWithFields(
-            title=f"{f1logo}Qualifying Results {race_name}",
+            title=f"{f1logo} Qualifying Results {race_name}",
             color=0xDB1921,
             description=f"Qualifying results for the most recent {race_name}",
             fields=fields
@@ -246,13 +248,6 @@ class formulaOneCommands(commands.Cog):
                 embed.set_thumbnail(url=constructor_images[name_lower])
             embed.set_footer(text=bot_name)
             await ctx.send(embed=embed)
-
-
-# DEBUG = FALSE:
-# @bot.command(name="f1")
-# async def formulaone(ctx):
-#     bot.add_cog(formulaOneCommands(commands))
-#     await ctx.send("Congrats, f1 commands now enabled")
 
 
 bot.add_cog(formulaOneCommands(commands))
