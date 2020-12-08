@@ -10,6 +10,8 @@ from datetime import datetime
 load_dotenv()
 year_duplicate = datetime.now().year
 
+savedguid = ""
+
 
 class formula1data:
 
@@ -22,13 +24,23 @@ class formula1data:
     #     return self.json_data
 
     def autosportf1(self):
+        global savedguid
         web_url = "https://www.autosport.com/rss/feed/f1"
         r = requests.get(web_url)
-        soup = BeautifulSoup(r.content, "html.parser")
-        item_no = soup.find_all("item")[1]
-        title = soup.find("title")
-        self.json_data = json.loads(script)
-        return self.json_data
+        soup = BeautifulSoup(r.content, "xml")
+        # print(soup.prettify())
+        title = ""
+        desc = ""
+        link = ""
+        guid = soup.find("guid").string
+        if guid == savedguid:
+            print("none")
+        else:
+            savedguid = guid
+            title = soup.find_all("title")[2].string
+            desc = soup.find_all("description")[1].string
+            link = soup.find_all("link")[3].string
+        return title, desc, link
 
     def apiDriverStandings(self):
         api_url = "http://ergast.com/api/f1/current/driverStandings.json"
@@ -88,25 +100,3 @@ class formula1data:
 
 
 # Import time to add sleep functionality to stop mass requests
-
-
-def autosportf1():
-    web_url = "https://www.autosport.com/rss/feed/f1"
-    r = requests.get(web_url)
-    soup = BeautifulSoup(r.content, "xml")
-    # print(soup.prettify())
-    title = ""
-    desc = ""
-    link = ""
-    guid2 = "autosport_154044"
-    guid = soup.find("guid").string
-    if guid == guid2:
-        print("none")
-    else:
-        title = soup.find_all("title")[2].string
-        desc = soup.find_all("description")[1].string
-        link = soup.find_all("link")[3].string
-    print(f"{title} | {desc} {link} {guid}")
-
-
-autosportf1()

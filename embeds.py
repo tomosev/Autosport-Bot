@@ -3,6 +3,8 @@ import discord
 
 f1logo = "<:F1logo:784857003225776128>"
 nl = '\n'
+embed = discord.Embed()
+bot_name = f"Autosport Bot{nl}*NOT affiliated with autosport.com"
 
 
 class EmbedWithFields(discord.Embed):

@@ -1,10 +1,8 @@
-import json
 import discord
 from discord.ext import tasks, commands
-from discord.ext.commands.core import guild_only
 # files
 from data import formula1data
-from embeds import EmbedWithFields, f1logo, nl
+from embeds import EmbedWithFields, f1logo, nl, embed, bot_name
 from images import driver_images, constructor_images, constructor_icons
 # env
 from dotenv import load_dotenv
@@ -12,14 +10,14 @@ from dotenv import load_dotenv
 import os
 import datetime
 
-bot = discord.Client()
 bot = commands.Bot(command_prefix='!')
+
+
+@bot.event
+async def on_ready():
+    print('Green flag'.format(commands))
+
 # embed re-used fields
-bot_name = f"Autosport Bot{nl}*NOT affiliated with autosport.com"
-f1logo = "<:F1logo:784857003225776128>"
-caremoji = ":race_car:"
-nl = '\n'
-embed = discord.Embed()
 
 # removes the deafault help command
 bot.remove_command('help')
@@ -252,10 +250,6 @@ class formulaOneCommands(commands.Cog):
 
 bot.add_cog(formulaOneCommands(commands))
 
-
-@bot.event
-async def on_ready():
-    print('Green flag'.format(commands))
 
 load_dotenv()
 KEY = os.environ.get("DISCORD_KEY")
