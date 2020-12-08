@@ -10,10 +10,10 @@ constructor_icons = {
     "mclaren": "<:mclaren:784861634400878622>",
     "renault": "<:renault2:784861634282913792> ",
     "red bull": "<:redbull:784861637503877150>",
-    "racing point": "<:racingpoint:784861635025960983> ",
-    "williams": "<:williams2:784861634329051196> ",
-    "haas f1 team": "<:haas:784861635641999380> ",
-    "alfa romeo": "<:alfa:784861636078993508> ",
-    "ferrari": "<:ferrari:784861635667427378> ",
-    "alphatauri": "<:alpha2:784861634203615302> "
+    "racing point": "<:racingpoint:784861635025960983>",
+    "williams": "<:williams2:784861634329051196>",
+    "haas f1 team": "<:haas:784861635641999380>",
+    "alfa romeo": "<:alfa:784861636078993508>",
+    "ferrari": "<:ferrari:784861635667427378>",
+    "alphatauri": "<:alpha2:784861634203615302>"
 }

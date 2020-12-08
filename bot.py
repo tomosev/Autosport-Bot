@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 # packages
 import os
 import datetime
-
+year = datetime.datetime.now().year
 bot = commands.Bot(command_prefix='!')
 
 
@@ -17,17 +17,11 @@ bot = commands.Bot(command_prefix='!')
 async def on_ready():
     print('Green flag'.format(commands))
 
-# embed re-used fields
-
-# removes the deafault help command
-bot.remove_command('help')
-
 
 class formulaOneCommands(commands.Cog):
-    @commands.command(name="f1standings")
+    @commands.command(name="f1driverstandings")
     async def driverstandings(self, ctx):
         fields = []
-        year = datetime.datetime.now().year
         data = formula1data().apiDriverStandings()
         for race in data["MRData"]["StandingsTable"]["StandingsLists"][0]["DriverStandings"]:
             postion = race["position"]
@@ -46,9 +40,35 @@ class formulaOneCommands(commands.Cog):
                 f"{driver_first} {driver_last}{nl}Points: {points}{nl}Wins: {wins}"
             ])
         embed = EmbedWithFields(
-            title=f"Formula 1 {year} standings",
+            title=f"Formula 1 {year} Driver Standings",
             color=0xDB1921,
-            description=f"The current standings for the {year} season",
+            description=f"The current driver standings for the {year} season",
+            fields=fields,
+        )
+        embed.set_footer(text=bot_name)
+        await ctx.send(embed=embed)
+
+    @commands.command(name="f1teamstandings")
+    async def constructorstandings(self, ctx):
+        fields = []
+        data = formula1data().apiConstructorStandings()
+        for results in data["MRData"]["StandingsTable"]["StandingsLists"][0]["ConstructorStandings"]:
+            position = results["position"]
+            points = results["points"]
+            wins = results["wins"]
+            team = results["Constructor"]["name"]
+            teamname = team.lower()
+            icon = ""
+            if teamname in constructor_icons:
+                icon = constructor_icons[teamname]
+            fields.append([
+                f"{icon} **{position}**: {team}",
+                f"Points: {points}{nl}Wins: {wins}"
+            ])
+        embed = EmbedWithFields(
+            title=f"Formula 1 {year} Constructor Standings",
+            color=0xDB1921,
+            description=f"The current constructor standings for the {year} season",
             fields=fields,
         )
         embed.set_footer(text=bot_name)
@@ -248,6 +268,7 @@ class formulaOneCommands(commands.Cog):
             await ctx.send(embed=embed)
 
 
+bot.remove_command('help')
 bot.add_cog(formulaOneCommands(commands))
 
 

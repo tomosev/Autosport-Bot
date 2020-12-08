@@ -49,7 +49,7 @@ class formula1data:
         return self.json_data
 
     def apiConstructorStandings(self):
-        api_url = "http: // ergast.com/api/f1/current/constructorStandings.json"
+        api_url = "http://ergast.com/api/f1/current/constructorStandings.json"
         r = requests.get(api_url)
         self.json_data = r.json()
         return self.json_data
