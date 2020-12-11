@@ -1,7 +1,6 @@
 .env
 .vscode/
 formulaone/
-
 json/
 data.py
 embeds.py
