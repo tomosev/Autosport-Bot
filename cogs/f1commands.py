@@ -4,6 +4,7 @@ from embeds import EmbedWithFields, f1logo, nl, bot_name
 from images import driver_images, constructor_images, constructor_icons
 
 import datetime
+
 year = datetime.datetime.now().year
 
 
@@ -12,7 +13,9 @@ class formulaOneCommands(commands.Cog):
     async def driverstandings(self, ctx):
         fields = []
         data = formula1data().apiDriverStandings()
-        for race in data["MRData"]["StandingsTable"]["StandingsLists"][0]["DriverStandings"]:
+        for race in data["MRData"]["StandingsTable"]["StandingsLists"][0][
+            "DriverStandings"
+        ]:
             postion = race["position"]
             points = race["points"]
             wins = race["wins"]
@@ -24,10 +27,12 @@ class formulaOneCommands(commands.Cog):
             icon = ""
             if teamname in constructor_icons:
                 icon = constructor_icons[teamname]
-            fields.append([
-                f"{icon} **{postion}**: {driver_code}",
-                f"{driver_first} {driver_last}{nl}Points: {points}{nl}Wins: {wins}"
-            ])
+            fields.append(
+                [
+                    f"{icon} **{postion}**: {driver_code}",
+                    f"{driver_first} {driver_last}{nl}Points: {points}{nl}Wins: {wins}",
+                ]
+            )
         embed = EmbedWithFields(
             title=f"Formula 1 {year} Driver Standings",
             color=0xDB1921,
@@ -41,7 +46,9 @@ class formulaOneCommands(commands.Cog):
     async def constructorstandings(self, ctx):
         fields = []
         data = formula1data().apiConstructorStandings()
-        for results in data["MRData"]["StandingsTable"]["StandingsLists"][0]["ConstructorStandings"]:
+        for results in data["MRData"]["StandingsTable"]["StandingsLists"][0][
+            "ConstructorStandings"
+        ]:
             position = results["position"]
             points = results["points"]
             wins = results["wins"]
@@ -50,10 +57,9 @@ class formulaOneCommands(commands.Cog):
             icon = ""
             if teamname in constructor_icons:
                 icon = constructor_icons[teamname]
-            fields.append([
-                f"{icon} **{position}**: {team}",
-                f"Points: {points}{nl}Wins: {wins}"
-            ])
+            fields.append(
+                [f"{icon} **{position}**: {team}", f"Points: {points}{nl}Wins: {wins}"]
+            )
         embed = EmbedWithFields(
             title=f"Formula 1 {year} Constructor Standings",
             color=0xDB1921,
@@ -76,12 +82,15 @@ class formulaOneCommands(commands.Cog):
             unformatteddate = race["date"]
             unformattedtime = race["time"]
             time = unformattedtime[0:5]
-            date = datetime.datetime.strptime(
-                unformatteddate, "%Y-%m-%d").strftime("%d-%m-%Y")
-            fields.append([
-                f"{f1logo} **{name}**",
-                f"Date: {date}{nl}Time: {time} (zulutime) {nl}Location: {circuit}  [{name} on Wikipedia]({url})"
-            ])
+            date = datetime.datetime.strptime(unformatteddate, "%Y-%m-%d").strftime(
+                "%d-%m-%Y"
+            )
+            fields.append(
+                [
+                    f"{f1logo} **{name}**",
+                    f"Date: {date}{nl}Time: {time} (zulutime) {nl}Location: {circuit}  [{name} on Wikipedia]({url})",
+                ]
+            )
         embed = EmbedWithFields(
             title=f"Formula 1 Race Calandar {year}",
             color=0xDB1921,
@@ -108,15 +117,12 @@ class formulaOneCommands(commands.Cog):
             icon = ""
             if teamname in constructor_icons:
                 icon = constructor_icons[teamname]
-            fields.append([
-                f"{icon}** {position}**: {driver_code}",
-                f"{status}"
-            ])
+            fields.append([f"{icon}** {position}**: {driver_code}", f"{status}"])
         embed = EmbedWithFields(
             title=f"{f1logo} Results {race_name}",
             color=0xDB1921,
             description=f"Results for the most recent {race_name}",
-            fields=fields
+            fields=fields,
         )
         embed.set_footer(text=bot_name)
         await ctx.send(embed=embed)
@@ -150,15 +156,17 @@ class formulaOneCommands(commands.Cog):
             else:
                 Q3 = ""
 
-            fields.append([
-                f"{icon} **{position}**: {driver_code}",
-                f"*Q1:* {Q1}{nl}*Q2:* {Q2}{nl}*Q3:* {Q3}"
-            ])
+            fields.append(
+                [
+                    f"{icon} **{position}**: {driver_code}",
+                    f"*Q1:* {Q1}{nl}*Q2:* {Q2}{nl}*Q3:* {Q3}",
+                ]
+            )
         embed = EmbedWithFields(
             title=f"{f1logo} Qualifying Results {race_name}",
             color=0xDB1921,
             description=f"Qualifying results for the most recent {race_name}",
-            fields=fields
+            fields=fields,
         )
         embed.set_footer(text=bot_name)
         await ctx.send(embed=embed)
@@ -174,10 +182,12 @@ class formulaOneCommands(commands.Cog):
             last_name = race["familyName"]
             number = race["permanentNumber"]
             code = race["code"]
-            fields.append([
-                f"{f1logo}** {first_name} {last_name}**",
-                f"Number: {number}{nl}Code: {code}"
-            ])
+            fields.append(
+                [
+                    f"{f1logo}** {first_name} {last_name}**",
+                    f"Number: {number}{nl}Code: {code}",
+                ]
+            )
         embed = EmbedWithFields(
             title=f"Formula 1 Driver List {year}",
             color=0xDB1921,
@@ -200,10 +210,13 @@ class formulaOneCommands(commands.Cog):
             nation = race["nationality"]
             url = race["url"]
             dateofbirth = datetime.datetime.strptime(
-                unformated_dob, "%Y-%m-%d").strftime("%d-%m-%Y")
-            embed = discord.Embed(title=f"{f1logo} {first_name} {last_name}",
-                                  description=f"**Number:** {number}{nl}**Code:** {code}{nl}**DOB**: {dateofbirth}{nl}**Nationality:** {nation}{nl}  [{first_name} {last_name} on Wikipedia]({url})",
-                                  color=0xDB1921)
+                unformated_dob, "%Y-%m-%d"
+            ).strftime("%d-%m-%Y")
+            embed = discord.Embed(
+                title=f"{f1logo} {first_name} {last_name}",
+                description=f"**Number:** {number}{nl}**Code:** {code}{nl}**DOB**: {dateofbirth}{nl}**Nationality:** {nation}{nl}  [{first_name} {last_name} on Wikipedia]({url})",
+                color=0xDB1921,
+            )
             image = last_name.lower()
             if image in driver_images:
                 embed.set_thumbnail(url=driver_images[image])
@@ -224,10 +237,9 @@ class formulaOneCommands(commands.Cog):
             icon = ""
             if name_lower in constructor_icons:
                 icon = constructor_icons[name_lower]
-            fields.append([
-                f"{icon} **{name}**",
-                f"Origin: {nation}{nl}[More info]({url})"
-            ])
+            fields.append(
+                [f"{icon} **{name}**", f"Origin: {nation}{nl}[More info]({url})"]
+            )
         embed = EmbedWithFields(
             title=f"Formula 1 Team List {year}",
             color=0xDB1921,
@@ -248,13 +260,16 @@ class formulaOneCommands(commands.Cog):
             name_lower = name.lower()
             if name_lower in constructor_icons:
                 icon = constructor_icons[name_lower]
-            embed = discord.Embed(title=f"{icon} {name}",
-                                  description=f"**Origin:** {nation}{nl} [{name} on Wikipedia]({url})",
-                                  color=0xDB1921)
+            embed = discord.Embed(
+                title=f"{icon} {name}",
+                description=f"**Origin:** {nation}{nl} [{name} on Wikipedia]({url})",
+                color=0xDB1921,
+            )
             if name_lower in constructor_images:
                 embed.set_thumbnail(url=constructor_images[name_lower])
             embed.set_footer(text=bot_name)
             await ctx.send(embed=embed)
+
 
 def setup(bot):
     bot.add_cog(formulaOneCommands(commands))
