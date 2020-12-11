@@ -1,14 +1,12 @@
 <h1 align="center" style="font-weight: bold">Autosport Bot</h1>
-<p align="center"> 
-  <img src="https://img.shields.io/badge/Work%20in%20Progress-V0.1-lightgrey"></img>
-</p>
+<p>The Autosport discord bot utilizes web scraping and public API's to return specific racing data to users in discord. The bot is currently a work in progress and will be updated on a regular basis.</p>
+<img src="https://img.shields.io/badge/Work%20in%20Progress-V0.1-lightgrey"></img>
 
-
-The Autosport discord bot utilizes web scraping and public API's to return specific racing data to users in discord. The bot is currently a work in progress and will be updated on a regular basis.
 
 
 ## Formula 1 Commands
 Command prefix = `!`
+
 | Command           	| Output                                                                          	|
 |-------------------	|---------------------------------------------------------------------------------	|
 | `f1latestresults`   	| Lists the latest race results.                                                  	|
@@ -21,3 +19,11 @@ Command prefix = `!`
 | `f1team`            	| Query a specific constructor's information past or present.  `!f1team mercedes` 	|
 | `f1driver`          	| Query a specific driver's information past or present.  `!f1driver hamilton`    	|
 | `f1gif`             	| Get a random f1 gif in response, just for fun!                                  	|
+
+
+## Response Examples
+![latest results](images/screenshots/results.png)
+![teamlist](images/screenshots/teamlist.png)
+
+
+
