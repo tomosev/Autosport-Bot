@@ -58,7 +58,8 @@ class formulaOneCommands(commands.Cog):
             if teamname in constructor_icons:
                 icon = constructor_icons[teamname]
             fields.append(
-                [f"{icon} **{position}**: {team}", f"Points: {points}{nl}Wins: {wins}"]
+                [f"{icon} **{position}**: {team}",
+                    f"Points: {points}{nl}Wins: {wins}"]
             )
         embed = EmbedWithFields(
             title=f"Formula 1 {year} Constructor Standings",
@@ -117,7 +118,8 @@ class formulaOneCommands(commands.Cog):
             icon = ""
             if teamname in constructor_icons:
                 icon = constructor_icons[teamname]
-            fields.append([f"{icon}** {position}**: {driver_code}", f"{status}"])
+            fields.append(
+                [f"{icon}** {position}**: {driver_code}", f"{status}"])
         embed = EmbedWithFields(
             title=f"{f1logo} Results {race_name}",
             color=0xDB1921,
@@ -159,7 +161,7 @@ class formulaOneCommands(commands.Cog):
             fields.append(
                 [
                     f"{icon} **{position}**: {driver_code}",
-                    f"*Q1:* {Q1}{nl}*Q2:* {Q2}{nl}*Q3:* {Q3}",
+                    f"Q1: {Q1}{nl}Q2: {Q2}{nl}Q3: {Q3}",
                 ]
             )
         embed = EmbedWithFields(
@@ -238,7 +240,8 @@ class formulaOneCommands(commands.Cog):
             if name_lower in constructor_icons:
                 icon = constructor_icons[name_lower]
             fields.append(
-                [f"{icon} **{name}**", f"Origin: {nation}{nl}[More info]({url})"]
+                [f"{icon} **{name}**",
+                    f"Origin: {nation}{nl}[More info]({url})"]
             )
         embed = EmbedWithFields(
             title=f"Formula 1 Team List {year}",
