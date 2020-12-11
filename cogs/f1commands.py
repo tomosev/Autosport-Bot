@@ -1,10 +1,11 @@
+import discord
 from discord.ext import commands
+
 from data import formula1data
 from embeds import EmbedWithFields, f1logo, nl, bot_name
 from images import driver_images, constructor_images, constructor_icons
 
 import datetime
-
 year = datetime.datetime.now().year
 
 
