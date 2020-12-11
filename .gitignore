@@ -3,5 +3,7 @@
 formulaone/
 
 json/
-
+data.py
+embeds.py
+images.py
 __pycache__/
