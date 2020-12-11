@@ -98,5 +98,21 @@ class formula1data:
         self.json_data = r.json()
         return self.json_data
 
+    def getrandomf1gif(self):
+        APIKEY = os.environ.get("GIFY_KEY")
+        parameters = {
+            "api_key": APIKEY,
+            "tag": "formula 1",
+            "rating": "r"
+        }
+        headers = {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+        }
+        r = requests.get(
+            "https://api.giphy.com/v1/gifs/random", params=parameters, headers=headers)
+        self.json_data = r.json()
+        return self.json_data
+
 
 # Import time to add sleep functionality to stop mass requests

@@ -268,9 +268,21 @@ class formulaOneCommands(commands.Cog):
             await ctx.send(embed=embed)
 
 
+class utilities(commands.Cog):
+    pass
+
+
+class gifs(commands.Cog):
+    @commands.command(name="f1gif")
+    async def f1gif(self, ctx):
+        gif_data = formula1data().getrandomf1gif()
+        url = gif_data["data"]["bitly_gif_url"]
+        await ctx.send(url)
+
+
 bot.remove_command('help')
 bot.add_cog(formulaOneCommands(commands))
-
+bot.add_cog(gifs(commands))
 
 load_dotenv()
 KEY = os.environ.get("DISCORD_KEY")
