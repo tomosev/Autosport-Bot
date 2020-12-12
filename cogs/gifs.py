@@ -1,5 +1,4 @@
 from discord.ext import commands
-from data import formula1data
 
 
 class gifs(commands.Cog):
