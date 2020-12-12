@@ -1,10 +1,10 @@
 import discord
 from discord.ext import commands
-import config
-import f1data
-from embeds import EmbedWithFields
 
-from images import driver_images, constructor_images, constructor_icons
+import config
+import data.f1_data as f1data
+from embeds import EmbedWithFields
+from images.images import driver_images, team_images, team_icons
 
 
 class formulaOneCommands(commands.Cog):
@@ -25,8 +25,8 @@ class formulaOneCommands(commands.Cog):
             team = race["Constructors"][0]["name"]
             icon = ""
 
-            if team.lower() in constructor_icons:
-                icon = constructor_icons[team.lower()]
+            if team.lower() in team_icons:
+                icon = team_icons[team.lower()]
 
             fields.append(
                 [
@@ -58,8 +58,8 @@ class formulaOneCommands(commands.Cog):
             team = results["Constructor"]["name"]
             icon = ""
 
-            if team.lower() in constructor_icons:
-                icon = constructor_icons[team.lower()]
+            if team.lower() in team_icons:
+                icon = team_icons[team.lower()]
 
             fields.append(
                 [
@@ -121,8 +121,8 @@ class formulaOneCommands(commands.Cog):
             team = results["Constructor"]["name"]
             icon = ""
 
-            if team.lower() in constructor_icons:
-                icon = constructor_icons[team.lower()]
+            if team.lower() in team_icons:
+                icon = team_icons[team.lower()]
 
             fields.append([f"{icon}** {position}**: {driver_code}", f"{status}"])
 
@@ -148,8 +148,8 @@ class formulaOneCommands(commands.Cog):
             teamname = results["Constructor"]["name"]
             icon = ""
 
-            if teamname.lower() in constructor_icons:
-                icon = constructor_icons[teamname.lower()]
+            if teamname.lower() in team_icons:
+                icon = team_icons[teamname.lower()]
 
             Q1, Q2, Q3 = "", "", ""
             if "Q1" in results:
@@ -240,8 +240,8 @@ class formulaOneCommands(commands.Cog):
             url = team["url"]
             icon = ""
 
-            if name.lower() in constructor_icons:
-                icon = constructor_icons[name.lower()]
+            if name.lower() in team_icons:
+                icon = team_icons[name.lower()]
 
             fields.append(
                 [f"{icon} **{name}**", f"Origin: {nation}{config.NL}[More info]({url})"]
@@ -266,8 +266,8 @@ class formulaOneCommands(commands.Cog):
             nation = team["nationality"]
             url = team["url"]
 
-            if name.lower() in constructor_icons:
-                icon = constructor_icons[name.lower()]
+            if name.lower() in team_icons:
+                icon = team_icons[name.lower()]
 
             embed = discord.Embed(
                 title=f"{icon} {name}",
@@ -275,8 +275,8 @@ class formulaOneCommands(commands.Cog):
                 color=0xDB1921,
             )
 
-            if name.lower() in constructor_images:
-                embed.set_thumbnail(url=constructor_images[name.lower()])
+            if name.lower() in team_images:
+                embed.set_thumbnail(url=team_images[name.lower()])
 
             embed.set_footer(text=config.BOT_FOOTER)
             await ctx.send(embed=embed)

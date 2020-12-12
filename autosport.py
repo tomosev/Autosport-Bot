@@ -13,7 +13,6 @@ async def on_ready():
 
 
 bot.remove_command("help")
-# bot.load_extension("cogs.gifs")
 bot.load_extension("cogs.f1")
 
 
