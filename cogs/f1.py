@@ -281,6 +281,12 @@ class formulaOneCommands(commands.Cog):
             embed.set_footer(text=config.BOT_FOOTER)
             await ctx.send(embed=embed)
 
+    @commands.command(name="gif")
+    async def f1gif(self, ctx):
+        gif = f1data.f1_random_gif()
+        url = gif["data"]["bitly_gif_url"]
+        await ctx.send(url)
+
 
 def setup(bot):
     bot.add_cog(formulaOneCommands(commands))

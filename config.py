@@ -11,4 +11,5 @@ NL = "\n"
 BOT_NAME = "Autosport Bot"
 BOT_PREFIX = "f1 "
 BOT_KEY = os.environ.get("DISCORD_KEY")
+BOT_GIF_KEY = os.environ.get("GIFY_KEY")
 BOT_FOOTER = f"Autosport Bot{NL}*NOT affiliated with autosport.com"

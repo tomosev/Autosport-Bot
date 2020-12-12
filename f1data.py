@@ -2,6 +2,7 @@ import requests
 import datetime
 import os
 from dotenv import load_dotenv
+import config
 
 
 load_dotenv()
@@ -63,8 +64,7 @@ def f1_latest_qualifying():
 
 
 def f1_random_gif():
-    APIKEY = os.environ.get("GIFY_KEY")
-    parameters = {"api_key": APIKEY, "tag": "formula 1", "rating": "r"}
+    parameters = {"api_key": config.BOT_GIF_KEY, "tag": "formula 1", "rating": "r"}
     headers = {
         "Content-Type": "application/json",
         "Accept": "application/json",
