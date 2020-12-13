@@ -5,25 +5,22 @@
 
 
 ## Formula 1 Commands
-Command prefix = `!`
+Command prefix = `f1`
 
 | Command           	| Output                                                                          	|
 |-------------------	|---------------------------------------------------------------------------------	|
-| `f1latestresults`   	| Lists the latest race results.                                                  	|
-| `f1qualifying`      	| Lists the latest qualifying results with Q1, 2 & 3 lap times.                   	|
-| `f1driverstandings` 	| Lists the current driver standings.                                             	|
-| `f1teamstandings`   	| List the current constructor standings.                                         	|
-| `f1calendar`        	| Lists the current formula 1 calendar.                                           	|
-| `f1drivers`         	| Lists the current drivers that are on the grid.                                 	|
-| `f1teams`           	| Lists the current constructors racing for the year.                             	|
-| `f1team`            	| Query a specific constructor's information past or present.  `!f1team mercedes` 	|
-| `f1driver`          	| Query a specific driver's information past or present.  `!f1driver hamilton`    	|
-| `f1gif`             	| Get a random f1 gif in response, just for fun!                                  	|
+| `latestresults`   	| Lists the latest race results.                                                  	|
+| `qualifying`      	| Lists the latest qualifying results with Q1, 2 & 3 lap times.                   	|
+| `driverstandings` 	| Lists the current driver standings.                                             	|
+| `teamstandings`   	| List the current constructor standings.                                         	|
+| `calendar`        	| Lists the current formula 1 calendar.                                           	|
+| `drivers`         	| Lists the current drivers that are on the grid.                                 	|
+| `teams`           	| Lists the current constructors racing for the year.                             	|
+| `team`            	| Query a specific constructor's information past or present.  `!team mercedes` 	|
+| `driver`          	| Query a specific driver's information past or present.  `!driver hamilton`    	|
+| `gif`             	| Get a random f1 gif in response, just for fun!                                  	|
 
 
 ## Response Examples
 ![latest results](images/screenshots/results.png)
 ![teamlist](images/screenshots/teamlist.png)
-
-
-

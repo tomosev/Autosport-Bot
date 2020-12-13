@@ -22,12 +22,49 @@ async def helpcommand(ctx):
     embed = EmbedWithFields(
         title=f"{config.BOT_NAME} Commands",
         color=0xDB1921,
-        description=f"Command Prefix = {config.BOT_PREFIX}",
+        description=f"Command Prefix = ` {config.BOT_PREFIX}`",
+        inline_all=False,
         fields=[
             [
                 "latestresults",
-                "say soemthign here",
-            ]
+                "Lists the latest race results.",
+            ],
+            [
+                "qualifying",
+                "Lists the latest qualifying results with Q1, 2 & 3 lap times.",
+            ],
+            [
+                "driverstandings",
+                "Lists the current driver standings.",
+            ],
+            [
+                "teamstandings",
+                "List the current constructor standings.",
+            ],
+            [
+                "calendar",
+                "Lists the current formula 1 calendar.",
+            ],
+            [
+                "drivers",
+                "Lists the current drivers that are on the grid.",
+            ],
+            [
+                "teams",
+                "Lists the current constructors racing for the year.",
+            ],
+            [
+                "team",
+                "Query a specific constructor's information past or present.`f1 team mercedes`",
+            ],
+            [
+                "driver",
+                "Query a specific driver's information past or present. `f1 driver hamilton`",
+            ],
+            [
+                "gif",
+                "Get a random f1 gif in response, just for fun!",
+            ],
         ],
     )
     embed.set_footer(text=config.BOT_FOOTER)
