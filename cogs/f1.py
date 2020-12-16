@@ -326,17 +326,43 @@ class formulaOneCommands(commands.Cog):
                 ],
                 [
                     "team",
-                    "Query a specific constructor's information past or present.`f1 team mercedes`",
+                    "Query a specific constructor's information past or present. ` f1 team mercedes `",
                 ],
                 [
                     "driver",
-                    "Query a specific driver's information past or present. `f1 driver hamilton`",
+                    "Query a specific driver's information past or present. ` f1 driver hamilton `",
                 ],
                 [
                     "gif",
                     "Get a random f1 gif in response, just for fun!",
                 ],
+                ["news", "Gets the latest news articles from autosport.com"],
             ],
+        )
+        embed.set_footer(text=config.BOT_FOOTER)
+        await ctx.send(embed=embed)
+
+    @commands.command(name="news")
+    async def rss_news(self, ctx):
+        soup = f1data.autosportf1()
+        fields = []
+        for item in soup.find_all("item"):
+            # guid = item.find("guid").string - Might come in handy when making auto notifications
+            title = item.find("title").string
+            desc = item.find("description").string
+            link = item.find("link").string
+            fields.append(
+                [
+                    f"{config.F1_LOGO} **{title}**",
+                    f"{desc}{config.NL}[Full Report]({link})",
+                ]
+            )
+
+        embed = EmbedWithFields(
+            title=f"Latest news from autosport.com",
+            color=0xDB1921,
+            description=f"Stay up to date with the latest Formula 1 news from Autosport.",
+            fields=fields,
         )
         embed.set_footer(text=config.BOT_FOOTER)
         await ctx.send(embed=embed)
