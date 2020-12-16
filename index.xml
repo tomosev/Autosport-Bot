@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" version="2.0">
+   <channel>
+      <title>Formula 1 news - Autosport</title>
+      <description>Stay up to date with the latest Formula 1 news from Autosport.</description>
+      <link>https://www.autosport.com</link>
+      <language>en</language>
+      <copyright>(c) 2020 Autosport.com</copyright>
+      <ttl>60</ttl>
+      <lastBuildDate>Wed, 16 Dec 2020 21:27:47 +0000</lastBuildDate>
+      <image>
+         <title>Formula 1 news - Autosport</title>
+         <url>https://www.autosport.com/img/logos/autosport-logo-inverse.gif</url>
+         <link>https://www.autosport.com</link>
+      </image>
+      <atom:link href="https://www.autosport.com/rss/feed/f1" rel="self" type="application/rss+xml" />
+      <item>
+         <title>F1 signs new five-year deal with Interlagos to host Sao Paulo GP</title>
+         <description>Formula 1 will remain at Interlagos for another five years after a new deal was announced on Wednesday, renaming the race the Sao Paulo Grand Prix</description>
+         <link>https://www.autosport.com/f1/news/154249/f1-signs-new-fiveyear-deal-with-interlagos</link>
+         <guid isPermaLink="false">autosport_154249</guid>
+         <category>F1</category>
+         <pubDate>Wed, 16 Dec 2020 19:35:42 +0000</pubDate>
+      </item>
+      <item>
+         <title>Who are McLaren's new Formula 1 investors?</title>
+         <description>McLaren ended a turbulent 2020 on a high on Sunday as it clinched third place in the Formula 1 constructors' championship, marking its best finish since 2012</description>
+         <link>https://www.autosport.com/f1/news/154246/who-are-mclaren-new-formula-1-investors</link>
+         <guid isPermaLink="false">autosport_154246</guid>
+         <category>F1</category>
+         <pubDate>Wed, 16 Dec 2020 16:28:12 +0000</pubDate>
+      </item>
+      <item>
+         <title>Ricciardo: F1 should consider Abu Dhabi layout change after "grim" entertainment</title>
+         <description>Daniel Ricciardo believes Formula 1 should consider tweaking the layout of the Yas Marina Circuit in Abu Dhabi, saying the entertainment in its races can be "a bit grim"</description>
+         <link>https://www.autosport.com/f1/news/154245/ricciardo-f1-should-consider-abu-dhabi-layout-change</link>
+         <guid isPermaLink="false">autosport_154245</guid>
+         <category>F1</category>
+         <pubDate>Wed, 16 Dec 2020 15:34:24 +0000</pubDate>
+      </item>
+      <item>
+         <title>Bottas: Second in F1 drivers’ championship "can’t be that satisfying"</title>
+         <description>Valtteri Bottas says finishing second in the Formula 1 drivers' championship "can't be that satisfying" following another defeat in the title race to Mercedes team-mate Lewis Hamilton</description>
+         <link>https://www.autosport.com/f1/news/154238/bottas-second-in-standings-canEURTMt-be-that-satisfying</link>
+         <guid isPermaLink="false">autosport_154238</guid>
+         <category>F1</category>
+         <pubDate>Wed, 16 Dec 2020 11:43:21 +0000</pubDate>
+      </item>
+      <item>
+         <title>Red Bull hopeful of keeping Honda F1 power units after engine freeze talks</title>
+         <description>Red Bull says alignment among rival teams over a Formula 1 engine freeze has made it hopeful it can still secure a deal to keep running Honda engines from 2022</description>
+         <link>https://www.autosport.com/f1/news/154236/red-bull-hopes-to-keep-honda-engines-after-freeze-talks</link>
+         <guid isPermaLink="false">autosport_154236</guid>
+         <category>F1</category>
+         <pubDate>Wed, 16 Dec 2020 10:40:20 +0000</pubDate>
+      </item>
+      <item>
+         <title>Brown: Third in F1 constructors' standings more about prestige than money</title>
+         <description>McLaren Formula 1 team chairman Zak Brown insists that the team's jump to third place in the world championship is more about prestige than any financial benefit</description>
+         <link>https://www.autosport.com/f1/news/154233/brown-third-in-standings-about-prestige-not-money</link>
+         <guid isPermaLink="false">autosport_154233</guid>
+         <category>F1</category>
+         <pubDate>Wed, 16 Dec 2020 09:19:59 +0000</pubDate>
+      </item>
+      <item>
+         <title>Vettel explains Ferrari farewell song in Abu Dhabi GP</title>
+         <description>Sebastian Vettel has explained why he burst in to song for his Ferrari Formula 1 team after the Abu Dhabi Grand Prix</description>
+         <link>https://www.autosport.com/f1/news/154231/vettel-explains-ferrari-farewell-song-in-abu-dhabi-gp</link>
+         <guid isPermaLink="false">autosport_154231</guid>
+         <category>F1</category>
+         <pubDate>Wed, 16 Dec 2020 09:12:12 +0000</pubDate>
+      </item>
+      <item>
+         <title>New lighting system to open up possibilities for more F1 night races</title>
+         <description>An all-new lighting system revealed for the first time today could open the door for more night races to be added to the Formula 1 calendar</description>
+         <link>https://www.autosport.com/f1/news/154229/new-lighting-kit-opens-up-options-for-more-night-races</link>
+         <guid isPermaLink="false">autosport_154229</guid>
+         <category>F1</category>
+         <pubDate>Wed, 16 Dec 2020 08:45:01 +0000</pubDate>
+      </item>
+      <item>
+         <title>Yuki Tsunoda replaces Kvyat at AlphaTauri for 2021 F1 season</title>
+         <description>The AlphaTauri Formula 1 team has confirmed Yuki Tsunoda will partner Pierre Gasly in 2021, replacing Daniil Kvyat at Red Bull's sister team</description>
+         <link>https://www.autosport.com/f1/news/154228/yuki-tsunoda-joins-alphatauri-for-2021-f1-season</link>
+         <guid isPermaLink="false">autosport_154228</guid>
+         <category>F1</category>
+         <pubDate>Wed, 16 Dec 2020 08:35:49 +0000</pubDate>
+      </item>
+      <item>
+         <title>Mazepin loses court battle over failed attempt to buy Force India</title>
+         <description>The case brought by Dmitry Mazepin's company Uralkali against the administrators of the Force India Formula 1 team in the High Court in London has been dismissed</description>
+         <link>https://www.autosport.com/f1/news/154224/mazepin-loses-court-battle-over-force-india-buyout</link>
+         <guid isPermaLink="false">autosport_154224</guid>
+         <category>F1</category>
+         <pubDate>Tue, 15 Dec 2020 18:36:32 +0000</pubDate>
+      </item>
+      <item>
+         <title>Ilott named as Ferrari F1 test driver for 2021</title>
+         <description>Callum Ilott has been confirmed as Ferrari's Formula 1 test driver for next season, after finishing as Formula 2 runner-up to Mick Schumacher this year</description>
+         <link>https://www.autosport.com/f1/news/154223/ilott-named-as-ferrari-f1-test-driver-for-2021</link>
+         <guid isPermaLink="false">autosport_154223</guid>
+         <category>F1</category>
+         <pubDate>Tue, 15 Dec 2020 17:42:15 +0000</pubDate>
+      </item>
+      <item>
+         <title>Sir Frank Williams in stable condition after being admitted to hospital</title>
+         <description>Sir Frank Williams has been admitted to hospital, and is in a stable condition, the former Formula 1 team principal's family has confirmed</description>
+         <link>https://www.autosport.com/f1/news/154221/sir-frank-williams-in-stable-condition-in-hospital</link>
+         <guid isPermaLink="false">autosport_154221</guid>
+         <category>F1</category>
+         <pubDate>Tue, 15 Dec 2020 17:07:25 +0000</pubDate>
+      </item>
+      <item>
+         <title>Alonso: F1 Abu Dhabi young driver test ignited "competitive spirit"</title>
+         <description>Fernando Alonso says his run in the Formula 1 young driver test in Abu Dhabi has ignited his "competitive spirit" ahead of his return with Alpine in 2021</description>
+         <link>https://www.autosport.com/f1/news/154218/alonso-abu-dhabi-test-ignited-competitive-spirit</link>
+         <guid isPermaLink="false">autosport_154218</guid>
+         <category>F1</category>
+         <pubDate>Tue, 15 Dec 2020 15:47:13 +0000</pubDate>
+      </item>
+      <item>
+         <title>Masi explains decision to delay Sainz investigation in Abu Dhabi GP</title>
+         <description>Formula 1 race director Michael Masi has explained the decision to delay the stewards' investigation into Carlos Sainz Jr's alleged slow pitlane entry in Abu Dhabi</description>
+         <link>https://www.autosport.com/f1/news/154217/masi-explains-decision-to-delay-sainz-investigation</link>
+         <guid isPermaLink="false">autosport_154217</guid>
+         <category>F1</category>
+         <pubDate>Tue, 15 Dec 2020 15:07:58 +0000</pubDate>
+      </item>
+      <item>
+         <title>Alonso fastest in F1 Abu Dhabi young driver test for Renault</title>
+         <description>Double world champion Fernando Alonso topped the times at Formula 1's young driver test in Abu Dhabi on Tuesday, as he completed a full day of running for Renault</description>
+         <link>https://www.autosport.com/f1/news/154213/alonso-fastest-in-f1-abu-dhabi-young-driver-test</link>
+         <guid isPermaLink="false">autosport_154213</guid>
+         <category>F1</category>
+         <pubDate>Tue, 15 Dec 2020 14:28:28 +0000</pubDate>
+      </item>
+   </channel>
+</rss>

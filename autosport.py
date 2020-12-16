@@ -1,7 +1,6 @@
 import discord
 from discord.ext import commands
 import config
-from embeds import EmbedWithFields
 from discord.ext.commands import CommandNotFound
 
 bot = commands.Bot(command_prefix=config.BOT_PREFIX)
@@ -17,9 +16,12 @@ async def on_ready():
 @bot.event
 async def on_command_error(ctx, error):
     if isinstance(error, CommandNotFound):
-        await ctx.send(
-            ":triangular_flag_on_post: Command not found. Use F1 help for a list of commands"
+        embed = discord.Embed(
+            title=f"Command not found.",
+            description="Use `f1 help` for a list of commands",
+            color=0xDB1921,
         )
+        await ctx.send(embed=embed)
     raise error
 
 
