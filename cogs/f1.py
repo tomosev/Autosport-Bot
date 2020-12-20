@@ -368,14 +368,5 @@ class formulaOneCommands(commands.Cog):
         await ctx.send(embed=embed)
 
 
-def getrsslatest():
-    data = f1data.autosportf1()
-    guid = data.find("guid").string - Might come in handy when making auto notifications
-    title = data.find("title").string
-    desc = data.find("description").string
-    link = data.find("link").string
-
-
-
 def setup(bot):
     bot.add_cog(formulaOneCommands(commands))
