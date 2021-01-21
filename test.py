@@ -21,6 +21,7 @@ def getrsslatest():
             with open("id.txt", "w") as id:
                 id.write(guid)
                 id.close()
+        time.sleep(100)
 
 
 getrsslatest()
